@@ -12,26 +12,22 @@ class Bankaccount:
         self.balance -= amount
         return self    
     def display_account_info(self):
-        print(f'Your Account Balance is: {self.balance}')
+        return f'Your Account Balance is: {self.balance}'
     def yield_interest(self):
         self.balance *= + (self.int_rate * 0.01)
         return self        
 
 class User:
-    def __init__(self, name, email):
+    def __init__(self, name) :
         self.name = name
-        self.email = email
-        self.account = Bankaccount(int_rate=0.02, balance=0)
+        self.money = 0
+        self.account = Bankaccount(name='Hank', email='fakeemail@gmail.com', int_rate=5, balance=0)
+    def display_user_balance(self):
+        self.account.display_account_info()
     
-    def updated_deposit(self):
-        self.account.deposit(100)
-        return self
-    def updated_withdraw(self):
-        self.account.withdraw(100)
-        return self
-    def updated_display_user_balance(self):
-        self.account.display_account_info
 
-peter = User('Peter', 'peter@fakeemail.com')
+user1 =User('user1')
 
-print(peter.updated_deposit)
+user1.account.deposit(100)
+user1.account.withdraw(50)
+user1.account.display_account_info()
